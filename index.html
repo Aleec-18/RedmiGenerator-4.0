@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReadmeGen — Generador de README</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">📄</span>
+        <span class="logo-text">ReadmeGen</span>
+      </div>
+      <p class="logo-sub">Generador de README para proyectos de GitHub</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="app">
+
+      <!-- ===== FORMULARIO ===== -->
+      <section class="panel panel-form">
+        <div class="panel-header">
+          <span>✏️</span> Datos del proyecto
+        </div>
+
+        <div class="form-body">
+
+          <div class="field">
+            <label for="nombre">Nombre del proyecto <span class="req">*</span></label>
+            <input type="text" id="nombre" placeholder="ej. ReadmeGen" />
+          </div>
+
+          <div class="field">
+            <label for="descripcion">Descripción <span class="req">*</span></label>
+            <textarea id="descripcion" rows="3" placeholder="¿Para qué sirve tu proyecto?"></textarea>
+          </div>
+
+          <div class="field">
+            <label>Tecnologías usadas</label>
+            <div class="tech-row">
+              <input type="text" id="tech-input" placeholder="ej. Python, Flask, React..." />
+              <button onclick="addTech()" class="btn-add" title="Agregar">+</button>
+            </div>
+            <div class="tags" id="tags"></div>
+          </div>
+
+          <div class="field">
+            <label for="instalacion">Cómo instalar</label>
+            <textarea id="instalacion" rows="2" placeholder="pip install -r requirements.txt"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="ejecucion">Cómo ejecutar</label>
+            <textarea id="ejecucion" rows="2" placeholder="python app.py"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="autor">Autor</label>
+            <input type="text" id="autor" placeholder="Tu nombre o usuario de GitHub" />
+          </div>
+
+        </div>
+
+        <div class="form-footer">
+          <button class="btn-generate" onclick="generateReadme()">
+            🚀 Generar README
+          </button>
+        </div>
+      </section>
+
+      <!-- ===== PREVIEW ===== -->
+      <section class="panel panel-preview">
+        <div class="panel-header">
+          <span>👀</span> Vista previa — README.md
+        </div>
+
+        <div class="preview-placeholder" id="placeholder">
+          <p>📝</p>
+          <p>Completa el formulario y presiona<br><strong>Generar README</strong></p>
+        </div>
+
+        <pre id="preview" class="preview-content" style="display:none"></pre>
+
+        <div class="preview-footer" id="preview-footer" style="display:none">
+          <button class="btn-action" onclick="copyReadme()" id="copy-btn">
+            📋 Copiar texto
+          </button>
+          <button class="btn-action" onclick="downloadReadme()">
+            ⬇️ Descargar .md
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Hecho para estudiantes que odian escribir README desde cero 💙</p>
+    <p style="margin-top: 4px; font-size: 12px;">
+      Manuel Alejandro Mera Ruiz · 2460971 · Taller Habilidades Informáticas
+    </p>
+  </footer>
+
+  <!-- Toast de notificación -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
